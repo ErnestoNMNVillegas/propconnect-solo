@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Home Page')">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body class="main-bg main-container">
+<nav th:replace="partials :: navbar"></nav>
+
+<main class="container-home">
+    <div class="proj-description">
+        <h1>Welcome</h1>
+        <h3>
+            Property Management Website
+        </h3>
+    </div>
+</main>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+</body>
+</html>
