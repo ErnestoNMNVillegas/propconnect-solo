@@ -19,22 +19,28 @@ public class Note {
     @Column(nullable = false, length = 50)
     private String category;
 
+    @Column
+    private String image_url;
+
     @ManyToOne
     @JoinColumn(name = "property_id")
     private Property property;
 
-    public Note(long id, String title, String body, String category, Property property) {
+
+    public Note(long id, String title, String body, String category, String image_url, Property property) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.category = category;
+        this.image_url = image_url;
         this.property = property;
     }
 
-    public Note(String title, String body, String category, Property property) {
+    public Note(String title, String body, String category, String image_url, Property property) {
         this.title = title;
         this.body = body;
         this.category = category;
+        this.image_url = image_url;
         this.property = property;
     }
 
@@ -72,6 +78,14 @@ public class Note {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
     public Property getProperty() {

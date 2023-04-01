@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Weather')"></head>
+<body class="main-bg main-container">
+<nav th:replace="partials :: navbar"></nav>
+
+<h1>SATX Weather</h1>
+
+<div>
+  <h3>Current Conditions</h3>
+  <p th:text="${currentWeather.description}">Description</p>
+  <!--              <p id="icon" th:text="${currentWeather.description}">Description</p>-->
+  <!--              <p id="wxIcon"></p>-->
+  <h3>Temperature</h3>
+  <p th:text="${currentWeather.temperature} + ' &#8457;'">Temperature</p>
+  <h3>Feels Like</h3>
+  <p th:text="${currentWeather.feelsLike} + ' &#8457;'">Feels Like</p>
+  <h3>Wind Speed</h3>
+  <p th:text="${currentWeather.windSpeed} + ' mph'"></p>
+</div>
+
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+<!-- Jquery JS -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!-- Custom JS-->
+<script src="js/main.js"></script>
+
+</body>
+</html>

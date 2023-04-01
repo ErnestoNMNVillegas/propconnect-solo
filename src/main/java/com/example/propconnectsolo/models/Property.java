@@ -26,8 +26,6 @@ public class Property {
     @Column(nullable = false, length = 100)
     private String category;
 
-    @Column
-    private String image_url;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
     private List<Note> notes;
@@ -39,25 +37,23 @@ public class Property {
     public Property(){
     }
 
-    public Property(long id, String street_add, String city, String state, int zip, String category, String image_url, List<Note> notes, User user) {
+    public Property(long id, String street_add, String city, String state, int zip, String category, List<Note> notes, User user) {
         this.id = id;
         this.street_add = street_add;
         this.city = city;
         this.state = state;
         this.zip = zip;
         this.category = category;
-        this.image_url = image_url;
         this.notes = notes;
         this.user = user;
     }
 
-    public Property(String street_add, String city, String state, int zip, String category, String image_url, List<Note> notes, User user) {
+    public Property(String street_add, String city, String state, int zip, String category, List<Note> notes, User user) {
         this.street_add = street_add;
         this.city = city;
         this.state = state;
         this.zip = zip;
         this.category = category;
-        this.image_url = image_url;
         this.notes = notes;
         this.user = user;
     }
@@ -112,13 +108,6 @@ public class Property {
         this.category = category;
     }
 
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
 
     public List<Note> getNotes() {
         return notes;
