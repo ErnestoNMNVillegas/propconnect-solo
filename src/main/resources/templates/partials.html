@@ -31,20 +31,20 @@
           </a>
         </li>
 
-<!--        <form sec:authorize="isAuthenticated()" class="d-flex" th:action="@{/logout}"-->
-<!--              th:method="POST">-->
-<!--          <button class="btn footer-bg" type="submit" id="logout">Log Out</button>-->
-<!--        </form>-->
-<!--        <li sec:authorize="isAuthenticated()" class="nav-item">-->
-<!--          <a class="nav-link" href="/profile">Profile</a>-->
-<!--        </li>-->
+        <form sec:authorize="isAuthenticated()" class="d-flex" th:action="@{/logout}"
+              th:method="POST">
+          <button class="btn footer-bg" type="submit" id="logout">Log Out</button>
+        </form>
+        <li sec:authorize="isAuthenticated()" class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
 
-<!--        <li sec:authorize="!isAuthenticated()" class="nav-item">-->
-<!--          <a class="nav-link" href="/login">Log In</a>-->
-<!--        </li>-->
-<!--        <li sec:authorize="!isAuthenticated()" class="nav-item">-->
-<!--          <a class="nav-link" href="/register">New Here?</a>-->
-<!--        </li>-->
+        <li sec:authorize="!isAuthenticated()" class="nav-item">
+          <a class="nav-link" href="/login">Log In</a>
+        </li>
+        <li sec:authorize="!isAuthenticated()" class="nav-item">
+          <a class="nav-link" href="/register">New Here?</a>
+        </li>
       </ul>
     </div>
   </div>
