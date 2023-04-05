@@ -37,7 +37,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/ads") // user's home page, it can be any URL
+                .defaultSuccessUrl("/current-weather") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -46,14 +46,14 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/ads", "/ads/{id}", "/sign-up") // anyone can see home, the ads pages, and sign up
+                .requestMatchers("/", "/props", "/props/{id}", "/register", "/props/create", "/current-weather", "/notes/create/{id}", "/css/**", "/js/**", "/static/**", "/props/index", "/props/show", "/notes/search", "/notes", "/index", "/notes/index", "notes/show", "/notes/**", "users/profile", "/about", "/notes/{id}/edit", "/props/{id}/delete", "props/**", "/img/**") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/ads/create", // only authenticated users can create ads
-                        "/ads/{id}/edit" // only authenticated users can edit ads
+                        "/props/create",  // only authenticated users can create ads
+                        "/props/{id}/edit", "/props/{id}/delete", "/props/delete", "/profile", "/profile/**" // only authenticated users can edit ads
                 )
                 .authenticated()
         ;

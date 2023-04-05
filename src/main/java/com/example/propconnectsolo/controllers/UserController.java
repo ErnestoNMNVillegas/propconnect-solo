@@ -4,6 +4,7 @@ import com.example.propconnectsolo.models.User;
 import com.example.propconnectsolo.repositories.NoteRepository;
 import com.example.propconnectsolo.repositories.PropertyRepository;
 import com.example.propconnectsolo.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,10 +53,10 @@ public class UserController {
         return "users/editProfile";
     }
 
-    @PostMapping("profile/edit")
-    public String saveEditProfile(@RequestParam(name="name") String username, @RequestParam(name="email") String email){
-        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-    }
+//    @PostMapping("profile/edit")
+//    public String saveEditProfile(@RequestParam(name="name") String username, @RequestParam(name="email") String email){
+//        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//    }
 
 
 
