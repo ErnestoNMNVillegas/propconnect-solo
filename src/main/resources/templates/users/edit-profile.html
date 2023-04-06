@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials :: head ('Edit Profile')"></head>
+<body class="main-bg main-container">
+<nav th:replace="partials :: navbar"></nav>
+<main class="container">
+    <h1>Edit Your User Profile</h1>
+    <form method="post" th:action="@{/profile/edit}">
+        <div class="mb-3 d-flex flex-column">
+            <h2 th:text="|Hello, ${#authentication.principal.username}!|"></h2>
+
+
+            <label for="name" class="form-label">Full Name:</label>
+            <input type="text" id="name" class="form-control" name="name" th:value="${#authentication.principal.name}">
+
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" id="username" class="form-control" name="username" th:value="${#authentication.principal.username}">
+
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" class="form-control" name="email" th:value="${#authentication.principal.email}">
+
+            <button class="btn btn-create-profile" type="submit">Save Changes</button>
+
+        </div>
+    </form>
+</main>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+</body>
+</html>

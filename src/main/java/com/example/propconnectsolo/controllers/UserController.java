@@ -50,7 +50,7 @@ public class UserController {
 
     @GetMapping("/profile/edit")
     public String showEditProfile(){
-        return "users/editProfile";
+        return "users/edit-profile";
     }
 
 //    @PostMapping("profile/edit")
