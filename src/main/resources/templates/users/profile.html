@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('Profile Page')"></head>
+<body class="main-bg main-container">
+<nav th:replace="partials :: navbar"></nav>
+<main class="container">
+    <h1>My Profile</h1><br>
+
+    <div class="card-container">
+        <div class="card profile-card w-100">
+            <h2 class="card-header greeting" th:text="|Hello, ${#authentication.principal.username}!|"></h2>
+            <p class="profile-email" th:text="|Email: ${#authentication.principal.email}|"></p>
+            <a th:href="@{/profile/edit}" class="btn btn-primary btn-edit-profile">Edit Profile</a>
+            <!--            <a th:href="@{/props/create}" class="btn btn-primary btn-create-profile w-100">Create Property</a>-->
+        </div>
+    </div>
+    <br>
+    <br>
+<!--    <div class="row">-->
+<!--        <div class="col-4" th:each="prop : ${props}">-->
+<!--            <div th:if="${#authentication.principal.id == prop.user.id}">-->
+<!--                <div class="card profile-prop-card">-->
+<!--                    <h4 class="card-header prop-header" th:text="|Property Category: ${prop.category}|"></h4>-->
+<!--                    <p>-->
+<!--                        <img th:src="${prop.image_url}" alt="control" width="200" height="200">-->
+<!--                    </p>-->
+<!--                    <a th:href="@{/props/{id} (id = ${prop.id})}">-->
+<!--                        <span th:text="${prop.street_add}"></span><br>-->
+<!--                        <span th:text="${prop.city}"></span>-->
+<!--                        <span th:text="|${prop.state}, |"></span>-->
+<!--                        <span th:text="${prop.zip}"></span></a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</main>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+
+</body>
+</html>
+
