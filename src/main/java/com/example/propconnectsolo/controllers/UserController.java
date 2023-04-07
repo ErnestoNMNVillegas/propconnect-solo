@@ -4,6 +4,7 @@ import com.example.propconnectsolo.models.User;
 import com.example.propconnectsolo.repositories.NoteRepository;
 import com.example.propconnectsolo.repositories.PropertyRepository;
 import com.example.propconnectsolo.repositories.UserRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -53,10 +54,24 @@ public class UserController {
         return "users/edit-profile";
     }
 
-//    @PostMapping("profile/edit")
-//    public String saveEditProfile(@RequestParam(name="name") String username, @RequestParam(name="email") String email){
-//        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-//    }
+    @PostMapping("profile/edit")
+    public String saveEditProfile(@ModelAttribute User user, @RequestParam(name="username") String username, @RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="password") String password){
+        user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        String hash = passwordEncoder.encode(password);
+        user.setPassword(hash);
+        user.setUsername(username);
+        user.setName(name);
+        user.setEmail(email);
+        userDao.save(user);
+
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User userDetails = (User) authentication.getPrincipal();
+//        userDetails.setUsername(username);
+//        userDetails.setName(name);
+//        userDetails.setEmail(email);
+//        userDetails.setPassword(hash);
+        return "redirect:/users/profile";
+    }
 
 
 
