@@ -24,10 +24,10 @@ public class PropertyController {
         this.liveWeatherService = liveWeatherService;
     }
 
-    @GetMapping("/props")
-    public String showAllProps(Model mode){
-        return "props/index";
-    }
+//    @GetMapping("/props")
+//    public String showAllProps(Model mode){
+//        return "props/index";
+//    }
 
 
 }

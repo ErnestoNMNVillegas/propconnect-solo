@@ -5,7 +5,7 @@
 <nav th:replace="partials :: navbar"></nav>
 <main class="container">
     <h1>Edit Your User Profile</h1>
-    <form method="post" th:action="@{/profile/edit}">
+    <form method="post" th:action="@{/profile/edit}" th:object="${user}">
         <div class="mb-3 d-flex flex-column">
             <h2 th:text="|Hello, ${#authentication.principal.username}!|"></h2>
 
@@ -20,7 +20,9 @@
             <input type="email" id="email" class="form-control" name="email" th:value="${#authentication.principal.email}">
 
             <label for="password" class="form-label">Password:</label>
-            <input type="password" id="password" class="form-control" name="password" th:value="${#authentication.principal.password}">
+            <input type="password" id="password" class="form-control" name="password" th:field="*{user.password}">
+
+
 
             <button class="btn btn-create-profile" type="submit">Save Changes</button>
 

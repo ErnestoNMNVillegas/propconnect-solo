@@ -9,10 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -41,7 +38,15 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/current-weather";
+
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User userDetails = (User) authentication.getPrincipal();
+//        userDetails.setUsername(username);
+//        userDetails.setName(name);
+//        userDetails.setEmail(email);
+//        userDetails.setPassword(hash);
+
+        return "redirect:/login";
     }
 
     @GetMapping("/profile")
@@ -50,30 +55,39 @@ public class UserController {
     }
 
     @GetMapping("/profile/edit")
-    public String showEditProfile(){
+    public String showEditProfile(Model model){
+        model.addAttribute("user", new User());
         return "users/edit-profile";
     }
 
-    @PostMapping("profile/edit")
-    public String saveEditProfile(@ModelAttribute User user, @RequestParam(name="username") String username, @RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="password") String password){
-        user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        String hash = passwordEncoder.encode(password);
-        user.setPassword(hash);
-        user.setUsername(username);
-        user.setName(name);
-        user.setEmail(email);
-        userDao.save(user);
+    @GetMapping("/profile/{id}/edit")
+    public String updateUser (@PathVariable long id, Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User editedUser = userDao.getReferenceById(id);
+        if(user.getId() == editedUser.getId()){
+            model.addAttribute("user", userDao.getReferenceById(id));
+            return "users/register";
+        }
+        return "redirect:/login";
+    }
 
+//    @PostMapping("profile/edit")
+//    public String saveEditProfile(@ModelAttribute User user, @RequestParam(name="username") String username, @RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="password") String password){
+//        user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        String hash = passwordEncoder.encode(password);
+//        user.setPassword(hash);
+//        user.setUsername(username);
+//        user.setName(name);
+//        user.setEmail(email);
+//        userDao.save(user);
+//
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        User userDetails = (User) authentication.getPrincipal();
 //        userDetails.setUsername(username);
 //        userDetails.setName(name);
 //        userDetails.setEmail(email);
 //        userDetails.setPassword(hash);
-        return "redirect:/users/profile";
-    }
-
-
-
+//        return "redirect:/users/profile";
+//    }
 
 }

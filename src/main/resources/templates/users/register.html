@@ -4,7 +4,7 @@
 <body class="main-bg main-container">
 <nav th:replace="partials :: navbar"></nav>
 <main class="container d-flex flex-column">
-  <h1>Create an Account</h1><br>
+  <h1>Create/Edit an Account</h1><br>
   <form th:action="@{/register}" th:method="POST" th:object="${user}">
     <div class="mb-3 d-flex flex-column">
 
@@ -19,6 +19,8 @@
 
       <label for="password" class="form-label d-flex">Password</label>
       <input id="password" class="form-control"  type="password" th:field="*{password}" required/>
+
+      <input type="hidden" th:field="*{id}">
 
       <input class="btn btn-create-profile" value="Sign me up!" type="submit" />
     </div>
