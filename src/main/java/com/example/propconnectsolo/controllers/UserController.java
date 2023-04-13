@@ -71,16 +71,6 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    @PostMapping("profile/edit")
-//    public String saveEditProfile(@ModelAttribute User user, @RequestParam(name="username") String username, @RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="password") String password){
-//        user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-//        String hash = passwordEncoder.encode(password);
-//        user.setPassword(hash);
-//        user.setUsername(username);
-//        user.setName(name);
-//        user.setEmail(email);
-//        userDao.save(user);
-//
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        User userDetails = (User) authentication.getPrincipal();
 //        userDetails.setUsername(username);
@@ -88,6 +78,5 @@ public class UserController {
 //        userDetails.setEmail(email);
 //        userDetails.setPassword(hash);
 //        return "redirect:/users/profile";
-//    }
 
 }
