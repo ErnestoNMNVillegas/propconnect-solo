@@ -11,9 +11,7 @@ import org.springframework.data.repository.cdi.Eager;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PropertyController {
@@ -38,6 +36,15 @@ public class PropertyController {
         return "props/index";
     }
 
+    @GetMapping("/props/{id}")
+    public String getOneProp(@PathVariable long id, Model model) {
+        Property prop = propDao.findById(id);
+        model.addAttribute("prop", prop);
+        model.addAttribute("notes", noteDao.findNotesByProperty(prop));
+        model.addAttribute("weather", liveWeatherService.getCurrentWeather(prop.getCity(), "us"));
+        return "props/show";
+    }
+
     @GetMapping("props/create")
     public String createPropForm(Model model){
         model.addAttribute("prop", new Property());
@@ -56,6 +63,34 @@ public class PropertyController {
         return "redirect:/profile";
     }
 
+    @GetMapping("/props/{id}/edit")
+    public String editPropForm(Model model, @PathVariable long id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Property prop = propDao.findById(id);
+        if (user.getId() == prop.getUser().getId()){
+            model.addAttribute("prop", prop);
+            model.addAttribute("apikey", apiKey);
+            return "props/create";
+        } else {
+            return "redirect:/props";
+        }
+    }
+
+    @GetMapping("/props/{id}/delete")
+    public String confirmDelete(@PathVariable long id, Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("prop", propDao.findById(id));
+        return "props/delete";
+    }
+
+    @PostMapping("/props/{id}/delete")
+    public String deleteProp(@PathVariable long id, @RequestParam(name="prop-id") long propId){
+        if (id == propId){
+            Property prop = propDao.findById(id);
+            propDao.delete(prop);
+        }
+        return "redirect:/props";
+    }
 
 
 }
