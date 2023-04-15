@@ -6,6 +6,7 @@ import com.example.propconnectsolo.repositories.NoteRepository;
 import com.example.propconnectsolo.repositories.PropertyRepository;
 import com.example.propconnectsolo.repositories.UserRepository;
 import com.example.propconnectsolo.services.LiveWeatherService;
+import jakarta.websocket.DeploymentException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.cdi.Eager;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,8 +21,6 @@ public class PropertyController {
     private final UserRepository userDao;
     private final LiveWeatherService liveWeatherService;
 
-//    @Value("${api.filestack.key}")
-    public String apiKey;
 
 
     public PropertyController(NoteRepository noteDao, PropertyRepository propDao, UserRepository userDao, LiveWeatherService liveWeatherService) {
@@ -37,7 +36,7 @@ public class PropertyController {
     }
 
     @GetMapping("/props/{id}")
-    public String getOneProp(@PathVariable long id, Model model) {
+    public String getOneProp(@PathVariable long id, Model model) throws DeploymentException {
         Property prop = propDao.findById(id);
         model.addAttribute("prop", prop);
         model.addAttribute("notes", noteDao.findNotesByProperty(prop));
@@ -48,7 +47,6 @@ public class PropertyController {
     @GetMapping("props/create")
     public String createPropForm(Model model){
         model.addAttribute("prop", new Property());
-        model.addAttribute("apikey", apiKey);
         return "props/create";
     }
 
@@ -69,7 +67,6 @@ public class PropertyController {
         Property prop = propDao.findById(id);
         if (user.getId() == prop.getUser().getId()){
             model.addAttribute("prop", prop);
-            model.addAttribute("apikey", apiKey);
             return "props/create";
         } else {
             return "redirect:/props";

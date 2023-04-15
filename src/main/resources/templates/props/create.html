@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Create Property')">
+</head>
+<body class="main-bg main-container">
+<nav th:replace="partials :: navbar"></nav>
+<script src="/js/keys.js"></script>
+<script
+        id="search-js"
+        defer
+        src="https://api.mapbox.com/search-js/v1.0.0-beta.14/web.js"
+>
+</script>
+<script>
+    const script = document.getElementById('search-js');
+    script.onload = function () {
+        mapboxsearch.autofill({
+            accessToken: mapBoxKey
+        });
+    };
+</script>
+<main class="container d-flex flex-column">
+
+    <h1>Enter a Property</h1>
+
+    <form th:action="@{/props/create}" th:method="post" th:object="${prop}">
+
+        <div class="mb-3 d-flex flex-column">
+            <label for="category">Category</label>
+            <select class="form-select propCatSelect" th:field="*{category}" id="category" name="category" required>
+                <option value="Home">Home</option>
+                <option value="Rental">Rental</option>
+                <option value="Vacant">Vacant</option>
+                <option value="Vacation-Home">Vacation Home</option>
+                <option value="I'm-Interested">I'm Interested</option>
+                <option value="Air-BnB">My AirBnB</option>
+            </select>
+
+            <label for="street_add">Street Address</label>
+
+            <input
+                    class="form-control" id="street_add" name="address" placeholder="Address" type="text"
+                    autocomplete="address-line1"
+                    th:field="*{street_add}"
+            />
+
+            <label for="city">City</label>
+
+            <input
+                    class="form-control" id="city" name="city" placeholder="City" type="text"
+                    autocomplete="address-level2"
+                    th:field="*{city}"
+            />
+
+            <label for="state">State</label>
+
+            <input
+                    class="form-control" id="state" name="state" placeholder="State" type="text"
+                    autocomplete="address-level1"
+                    th:field="*{state}"
+            />
+
+            <label for="zip">Zip</label>
+
+            <input
+                    class="form-control" id="zip" name="postcode" placeholder="Postcode" type="text"
+                    autocomplete="postal-code"
+                    th:field="*{zip}"
+            />
+
+            <input type="hidden" th:field="*{id}">
+
+            <input type="submit" class="btn btn-create-profile">
+
+        </div>
+
+    </form>
+
+</main>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script type="application/javascript" src="/js/filestack.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials :: head ('Viewing all Properties')}">
+    <title>All Properties</title>
+</head>
+<body class="main-bg main-container">
+<nav th:replace="~{partials :: navbar}"></nav>
+<main class="container">
+    <div th:each="prop : ${props}">
+        <a th:href="@{/props/{id} (id = ${prop.id})}"><h1 th:text="${prop.street_add}"></h1></a>
+        <p th:text="${prop.city}"></p>
+        <p th:text="${prop.state}"></p>
+        <p th:text="${prop.zip}"></p>
+        <p th:text="${prop.category}"></p>
+    </div>
+</main>
+<footer th:replace="~{partials :: footer}"></footer>
+<div th:replace="~{partials :: boot-scripts}"></div>
+</body>
+</html>

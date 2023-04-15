@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head ('View a Property')">
+    <title>Property</title>
+</head>
+<body class="main-bg main-container">
+<nav th:replace="partials :: navbar"></nav>
+<main class="container">
+
+
+    <div id="prop-show" class="row">
+        <div class="col-6">
+            <div class="card h-100">
+                <h5 class="card-header" th:text="|Category: ${prop.category}|"></h5>
+                <p><img th:src="${prop.image_url}" alt="control" width="200" height="200"></p>
+                <div class="card d-flex justify-content-center">
+                    <p class="address-header">Address:</p>
+                    <p th:text="${prop.street_add}"></p>
+                    <p th:text="${prop.city + ', ' + prop.state + ' ' + prop.zip}"></p>
+                    <a th:href="@{/props/{id}/edit(id=${prop.id})}" class="btn">Edit Property</a>
+                    <a th:href="@{/props/{id}/delete(id=${prop.id})}" class="btn">Delete Property</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6" id="current">
+            <div class="card c2 h-100 d-flex">
+                <h5 class="card-header">Current Weather Conditions</h5>
+                <div class="my-auto card">
+                    <input type="hidden" th:value="${weather.description}" id="icon">
+                    <p id="wxIcon"></p>
+                    <p th:text="|Description: ${weather.descriptText}.|"></p>
+                    <p id="visibleTemp" th:text="'Temperature: ' + ${weather.temperature} + ' &#8457;'"></p>
+                    <p th:text="'Feels like: ' + ${weather.feelsLike} + ' &#8457;'"></p>
+                    <p th:text="'Wind Speed: ' + ${weather.windSpeed} + ' mph'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    <div class="row">-->
+    <!--        <input type="hidden" id="temp" th:value="${weather.temperature}">-->
+    <!--        <p id="wxTempWarning"></p>-->
+    <!--    </div>-->
+    <!--    <div class="row">-->
+    <!--        <div class="col-12" th:each="note : ${notes}">-->
+    <!--            <div class="card">-->
+    <!--                <a th:href="@{/notes/{id} (id = ${note.id})}"><h1 th:text="|Note Title: ${note.title}|"></h1></a>-->
+    <!--                <p th:text="|Body: ${note.body}|"></p>-->
+    <!--                <p th:text="|Category: ${note.category}|"></p>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="com-btn d-flex">
+        <a th:href="@{/notes/create/{id}(id=${prop.id})}" class="btn btn-primary mx-auto">Add Note to Property</a>
+    </div>
+
+</main>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+<!-- Jquery JS -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!-- Custom JS -->
+<!--<script type="application/x-javascript" src="src/main/resources/static/js/main.js"></script>-->
+<script src="/js/main.js" type="application/javascript"></script>
+<link rel="stylesheet" href="/css/wxstyle.css" type="text/css">
+</body>
+</html>
