@@ -31,7 +31,8 @@ public class PropertyController {
     }
 
     @GetMapping("/props")
-    public String showAllProps(Model mode){
+    public String showAllProps(Model model){
+        model.addAttribute("props", propDao.findAll());
         return "props/index";
     }
 
