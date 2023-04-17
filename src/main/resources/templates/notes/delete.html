@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials :: head ('Delete Note')">
+</head>
+<body class="main-container main-bg">
+<nav th:replace="partials :: navbar"></nav>
+<main class="container">
+  <h5>Are you sure you wish to delete this note?</h5>
+  <h4 th:text="|Note: ${notes.title}|"></h4>
+  <form th:action="@{'/notes/' + ${notes.id} + '/delete'}" method="post">
+    <input type="hidden" th:value="${notes.id}" name="note-id"/>
+    <button type="submit" class="btn nav-bg warn-delete">Yes</button>
+    <a th:href="@{'/notes/' + ${notes.id}}" class="footer-bg btn no-delete">No</a>
+  </form>
+</main>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+</body>
+</html>

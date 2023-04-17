@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials :: head ('Viewing all Notes')}">
+    <title>All Properties</title>
+</head>
+<body class="main-bg main-container">
+<nav th:replace="~{partials :: navbar}"></nav>
+<main class="container">
+    <div class="row">
+        <div class="col" th:each="note : ${notes}">
+            <div class="card profile-prop-card">
+                <h4 class="card-header prop-header" th:text="|Note Category: ${note.category}|"></h4>
+                <a class="comm-note-anchor" th:href="@{/notes/{id} (id = ${note.id})}"><h4 th:text="${note.title}"></h4>
+                </a>
+                <p th:text="|Body: ${note.body}|"></p>
+                <p th:text="|Zip: ${note.property.zip}|"></p>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{partials :: footer}"></footer>
+<div th:replace="~{partials :: boot-scripts}"></div>
+</body>
+</html>
