@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Create Notes')"></head>
+<body class="main-bg main-container">
+<nav th:replace="partials :: navbar"></nav>
+<main class="container d-flex flex-column">
+
+  <h1>Create a Note for this Property</h1>
+  <form th:action="@{/notes/create}" th:method="post" th:object="${note}">
+
+    <div class="mb-3 d-flex flex-column">
+
+      <label for="category">Category</label>
+      <select class="form-select propCatSelect"  th:field="*{category}" id="category" name="category" required>
+        <option value="Safety">Safety</option>
+        <option value="Free">Free</option>
+        <option value="Services">Services</option>
+        <option value="Lost-Pet">Lost Pet</option>
+        <option value="For-Sale">For Sale</option>
+        <option value="General">General</option>
+      </select>
+
+      <label for="title">Title</label>
+      <input id="title" name="title" class="form-control" type="text" th:field="*{title}">
+
+      <label for="body">Body</label>
+      <textarea id="body" name="body" class="form-control" type="text" th:field="*{body}"></textarea>
+
+      <input type="hidden" name="propId" th:value="${propId}">
+      <!--            <input type="submit" class="btn btn-block btn-primary">-->
+      <input type="submit" class="btn btn-create-profile">
+
+    </div>
+  </form>
+</main>
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: boot-scripts"></div>
+
+</body>
+</html>
