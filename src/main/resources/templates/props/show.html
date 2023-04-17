@@ -35,22 +35,22 @@
             </div>
         </div>
     </div>
-    <!--    <div class="row">-->
-    <!--        <input type="hidden" id="temp" th:value="${weather.temperature}">-->
-    <!--        <p id="wxTempWarning"></p>-->
-    <!--    </div>-->
-    <!--    <div class="row">-->
-    <!--        <div class="col-12" th:each="note : ${notes}">-->
-    <!--            <div class="card">-->
-    <!--                <a th:href="@{/notes/{id} (id = ${note.id})}"><h1 th:text="|Note Title: ${note.title}|"></h1></a>-->
-    <!--                <p th:text="|Body: ${note.body}|"></p>-->
-    <!--                <p th:text="|Category: ${note.category}|"></p>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-<!--    <div class="com-btn d-flex">-->
-<!--        <a th:href="@{/notes/create/{id}(id=${prop.id})}" class="btn btn-primary mx-auto">Add Note to Property</a>-->
-<!--    </div>-->
+        <div class="row">
+            <input type="hidden" id="temp" th:value="${weather.temperature}">
+            <p id="wxTempWarning"></p>
+        </div>
+        <div class="row">
+            <div class="col-12" th:each="note : ${notes}">
+                <div class="card">
+                    <a th:href="@{/notes/{id} (id = ${note.id})}"><h1 th:text="|Note Title: ${note.title}|"></h1></a>
+                    <p th:text="|Body: ${note.body}|"></p>
+                    <p th:text="|Category: ${note.category}|"></p>
+                </div>
+            </div>
+        </div>
+    <div class="com-btn d-flex">
+        <a th:href="@{/notes/create/{id}(id=${prop.id})}" class="btn btn-primary mx-auto">Add Note to Property</a>
+    </div>
 
 </main>
 <footer th:replace="partials :: footer"></footer>

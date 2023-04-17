@@ -50,9 +50,12 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String showProfile(Model model){
-        return "users/profile";
-    }
+    public String showProfile(Model model) {
+        User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDetails =  userDao.findUserById(userDetails.getId());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("props", userDetails.getProperty());
+        return "users/profile";}
 
     @GetMapping("/profile/edit")
     public String showEditProfile(Model model){

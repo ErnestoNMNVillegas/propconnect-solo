@@ -10,10 +10,8 @@
         <div class="card profile-card w-100">
             <h2 class="card-header greeting" th:text="|Hello, ${#authentication.principal.username}!|"></h2>
             <p class="profile-email" th:text="|Email: ${#authentication.principal.email}|"></p>
-<!--            <a th:href="@{/profile/edit}" class="btn btn-primary btn-edit-profile">Edit Profile</a>-->
             <a class="btn btn-primary btn-edit-profile" th:href="@{/profile/{id}/edit (id = ${#authentication.principal.id})}">Edit Profile</a>
-
-            <!--            <a th:href="@{/props/create}" class="btn btn-primary btn-create-profile w-100">Create Property</a>-->
+            <a th:href="@{/props/create}" class="btn btn-primary btn-create-profile w-100">Create Property</a>
         </div>
     </div>
     <br>
