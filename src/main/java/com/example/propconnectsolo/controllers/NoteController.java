@@ -83,8 +83,6 @@ public class NoteController {
     @GetMapping("/notes/{id}/edit")
     public String editNoteForm(Model model, @PathVariable long id){
         Note note = noteDao.findById(id);
-        Property property = propDao.findById(id);
-        note.setProperty(property);
         model.addAttribute("notes", note);
         return "notes/edit-note";
     }

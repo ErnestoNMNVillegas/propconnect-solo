@@ -16,4 +16,5 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     @Query("from Note a where a.title LIKE  %:term% OR a.body LIKE  %:term% OR a.category like %:term% OR a.property.city LIKE %:term% OR a.property.state LIKE %:term% OR a.property.street_add LIKE %:term%")
     List<Note> searchByTitleLike(@Param("term") String term);
 
+
 }
