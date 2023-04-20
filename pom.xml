@@ -54,15 +54,27 @@
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
             <version>3.1.1.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>com.stripe</groupId>
-            <artifactId>stripe-java</artifactId>
-            <version>4.2.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.stripe</groupId>-->
+<!--            <artifactId>stripe-java</artifactId>-->
+<!--            <version>4.2.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>20.77.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -2,6 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials :: head ('Checkout')}">
     <title>All Properties</title>
+    <style>
+        #checkout-form input,
+        #checkout-form button {
+            display: block;
+            margin: 12px;
+        }
+    </style>
 </head>
 <body class="main-bg main-container">
 <nav th:replace="~{partials :: navbar}"></nav>

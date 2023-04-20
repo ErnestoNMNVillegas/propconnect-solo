@@ -5,7 +5,6 @@ import com.example.propconnectsolo.models.Property;
 import com.example.propconnectsolo.repositories.NoteRepository;
 import com.example.propconnectsolo.repositories.PropertyRepository;
 import com.example.propconnectsolo.repositories.UserRepository;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
