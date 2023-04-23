@@ -1,10 +1,15 @@
 //package com.example.propconnectsolo.controllers;
 //
 //import com.example.propconnectsolo.models.ChargeRequest;
+//import com.example.propconnectsolo.repositories.NoteRepository;
+//import com.example.propconnectsolo.repositories.PropertyRepository;
+//import com.example.propconnectsolo.repositories.UserRepository;
 //import com.example.propconnectsolo.services.StripeService;
 //import com.stripe.exception.StripeException;
 //import com.stripe.model.Charge;
 //import lombok.extern.java.Log;
+//import org.springframework.beans.factory.BeanCreationException;
+//import org.springframework.beans.factory.UnsatisfiedDependencyException;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
@@ -17,11 +22,24 @@
 //@Controller
 //public class ChargeController {
 //    @Autowired
-//    StripeService paymentsService;
+//    private final StripeService paymentsService;
+//
+//    private final UserRepository userDao;
+//
+//    private final PropertyRepository propDao;
+//
+//    private final NoteRepository noteDao;
+//
+//    public ChargeController(StripeService paymentsService, UserRepository userDao, PropertyRepository propDao, NoteRepository noteDao) {
+//        this.paymentsService = paymentsService;
+//        this.userDao = userDao;
+//        this.propDao = propDao;
+//        this.noteDao = noteDao;
+//    }
 //
 //    @PostMapping("/charge")
 //    public String charge(ChargeRequest chargeRequest, Model model)
-//            throws StripeException, AuthenticationException {
+//            throws StripeException,UnsatisfiedDependencyException,BeanCreationException, AuthenticationException {
 //        chargeRequest.setDescription("Example charge");
 //        chargeRequest.setCurrency(ChargeRequest.Currency.USD);
 //        Charge charge = paymentsService.charge(chargeRequest);
@@ -38,3 +56,4 @@
 //        return "stripe/result";
 //    }
 //}
+//
