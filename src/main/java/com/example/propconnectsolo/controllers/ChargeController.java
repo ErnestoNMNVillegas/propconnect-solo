@@ -11,17 +11,19 @@
 //import org.springframework.beans.factory.BeanCreationException;
 //import org.springframework.beans.factory.UnsatisfiedDependencyException;
 //import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
 //import org.springframework.stereotype.Controller;
+//import org.springframework.transaction.annotation.Transactional;
 //import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.ExceptionHandler;
 //import org.springframework.web.bind.annotation.PostMapping;
 //
 //import javax.naming.AuthenticationException;
 //
-//@Log
+//@Component
 //@Controller
 //public class ChargeController {
-//    @Autowired
+////    @Autowired
 //    private final StripeService paymentsService;
 //
 //    private final UserRepository userDao;
@@ -30,6 +32,7 @@
 //
 //    private final NoteRepository noteDao;
 //
+//    @Autowired
 //    public ChargeController(StripeService paymentsService, UserRepository userDao, PropertyRepository propDao, NoteRepository noteDao) {
 //        this.paymentsService = paymentsService;
 //        this.userDao = userDao;
@@ -37,9 +40,11 @@
 //        this.noteDao = noteDao;
 //    }
 //
+//
+//    @Transactional
 //    @PostMapping("/charge")
 //    public String charge(ChargeRequest chargeRequest, Model model)
-//            throws StripeException,UnsatisfiedDependencyException,BeanCreationException, AuthenticationException {
+//            throws StripeException,BeanCreationException {
 //        chargeRequest.setDescription("Example charge");
 //        chargeRequest.setCurrency(ChargeRequest.Currency.USD);
 //        Charge charge = paymentsService.charge(chargeRequest);
