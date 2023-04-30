@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{partials :: head ('Checkout')}">
+<head th:replace="~{partials :: head ('Charge')}">
   <title>All Properties</title>
   <style>
     #checkout-form input,
@@ -21,7 +21,7 @@
     <div>Charge id.: <span th:text='${chargeId}' /></div>
     <div>Balance transaction id.: <span th:text='${balance_transaction}' /></div>
   </div>
-  <a href='/checkout.html'>Checkout again</a>
+  <a href='/checkout'>Checkout again</a>
 </main>
 <footer th:replace="~{partials :: footer}"></footer>
 <div th:replace="~{partials :: boot-scripts}"></div>

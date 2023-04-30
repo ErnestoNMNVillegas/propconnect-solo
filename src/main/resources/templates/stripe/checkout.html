@@ -13,7 +13,9 @@
 <body class="main-bg main-container">
 <nav th:replace="~{partials :: navbar}"></nav>
 <main class="container">
-    <form action='/charge' method='POST' id='checkout-form'>
+    <form th:action="@{/charge}" th:method='POST' id='checkout-form'>
+<!--        "@{/props/create}"-->
+<!--        '/stripe/charge'-->
         <input type='hidden' th:value='${amount}' name='amount' />
         <label>Price:<span th:text='${amount/100}' /></label>
         <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->

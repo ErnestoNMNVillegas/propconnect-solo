@@ -29,6 +29,7 @@ public class CheckoutController {
         model.addAttribute("amount", 50 * 100); // in cents
         model.addAttribute("stripePublicKey", stripePublicKey);
         model.addAttribute("currency", ChargeRequest.Currency.USD);
+        System.out.println("ChargeRequest.Currency.USD = " + ChargeRequest.Currency.USD);
         return "stripe/checkout";
     }
 }

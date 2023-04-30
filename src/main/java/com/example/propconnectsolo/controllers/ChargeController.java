@@ -27,12 +27,13 @@ public class ChargeController {
 
     @PostMapping("/charge")
     public String charge(ChargeRequest chargeRequest, Model model)
-            throws StripeException,BeanCreationException {
+            throws StripeException {
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
         Charge charge = paymentsService.charge(chargeRequest);
         model.addAttribute("id", charge.getId());
         model.addAttribute("status", charge.getStatus());
+        System.out.println("charge.getStatus() = " + charge.getStatus());
         model.addAttribute("chargeId", charge.getId());
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
         return "stripe/result";
