@@ -1,9 +1,6 @@
 package com.example.propconnectsolo.controllers;
 
-import com.example.propconnectsolo.models.ChargeRequest;
-import com.example.propconnectsolo.repositories.NoteRepository;
-import com.example.propconnectsolo.repositories.PropertyRepository;
-import com.example.propconnectsolo.repositories.UserRepository;
+import com.example.propconnectsolo.data.ChargeRequest;
 import com.example.propconnectsolo.services.StripeService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

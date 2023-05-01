@@ -31,6 +31,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column
+    private int subscription;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Property> property;
 
@@ -39,20 +42,22 @@ public class User {
     public User() {
     }
 
-    public User(long id, String name, String username, String email, String password, List<Property> property) {
+    public User(long id, String name, String username, String email, String password, int subscription, List<Property> property) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.subscription = subscription;
         this.property = property;
     }
 
-    public User(String name, String username, String email, String password, List<Property> property) {
+    public User(String name, String username, String email, String password, int subscription, List<Property> property) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.subscription = subscription;
         this.property = property;
     }
 
@@ -104,4 +109,11 @@ public class User {
         this.property = property;
     }
 
+    public int getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(int subscription) {
+        this.subscription = subscription;
+    }
 }

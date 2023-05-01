@@ -1,18 +1,13 @@
 package com.example.propconnectsolo.services;
 
-import com.example.propconnectsolo.models.ChargeRequest;
-import com.example.propconnectsolo.repositories.NoteRepository;
-import com.example.propconnectsolo.repositories.PropertyRepository;
-import com.example.propconnectsolo.repositories.UserRepository;
+import com.example.propconnectsolo.data.ChargeRequest;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.naming.AuthenticationException;
 import java.util.HashMap;
 import java.util.Map;
 

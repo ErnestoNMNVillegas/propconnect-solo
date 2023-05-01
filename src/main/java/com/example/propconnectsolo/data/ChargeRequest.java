@@ -1,4 +1,4 @@
-package com.example.propconnectsolo.models;
+package com.example.propconnectsolo.data;
 
 
 import lombok.Data;
@@ -13,6 +13,7 @@ import lombok.Data;
         private Currency currency;
         private String stripeEmail;
         private String stripeToken;
+
     public String getDescription() {
         return description;
     }

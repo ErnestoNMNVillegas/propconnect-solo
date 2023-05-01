@@ -1,24 +1,14 @@
 package com.example.propconnectsolo.controllers;
 
-import com.example.propconnectsolo.models.ChargeRequest;
-import com.example.propconnectsolo.repositories.NoteRepository;
-import com.example.propconnectsolo.repositories.PropertyRepository;
-import com.example.propconnectsolo.repositories.UserRepository;
+import com.example.propconnectsolo.data.ChargeRequest;
 import com.example.propconnectsolo.services.StripeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
-import lombok.extern.java.Log;
-import org.springframework.beans.factory.BeanCreationException;
-import org.springframework.beans.factory.UnsatisfiedDependencyException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.naming.AuthenticationException;
 
 @Controller
 public class ChargeController {
@@ -33,9 +23,10 @@ public class ChargeController {
         Charge charge = paymentsService.charge(chargeRequest);
         model.addAttribute("id", charge.getId());
         model.addAttribute("status", charge.getStatus());
-        System.out.println("charge.getStatus() = " + charge.getStatus());
         model.addAttribute("chargeId", charge.getId());
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
+//        model.addAttribute("created", charge.getCreated());
+        System.out.println("charge.getCreated() = " + charge.getCreated());
         return "stripe/result";
     }
 
