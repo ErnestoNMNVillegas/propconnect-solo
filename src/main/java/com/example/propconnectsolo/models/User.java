@@ -14,6 +14,7 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        subscription = copy.subscription;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +33,7 @@ public class User {
     private String password;
 
     @Column
-    private int subscription;
+    private long subscription;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Property> property;
@@ -42,7 +43,7 @@ public class User {
     public User() {
     }
 
-    public User(long id, String name, String username, String email, String password, int subscription, List<Property> property) {
+    public User(long id, String name, String username, String email, String password, long subscription, List<Property> property) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -52,7 +53,7 @@ public class User {
         this.property = property;
     }
 
-    public User(String name, String username, String email, String password, int subscription, List<Property> property) {
+    public User(String name, String username, String email, String password, long subscription, List<Property> property) {
         this.name = name;
         this.username = username;
         this.email = email;
@@ -109,11 +110,11 @@ public class User {
         this.property = property;
     }
 
-    public int getSubscription() {
+    public long getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(int subscription) {
+    public void setSubscription(long subscription) {
         this.subscription = subscription;
     }
 }

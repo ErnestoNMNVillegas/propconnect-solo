@@ -44,6 +44,7 @@ public class PropertyController {
 
     @GetMapping("/props/{id}")
     public String getOneProp(@PathVariable long id, Model model) throws DeploymentException {
+        if (checkSub(model)) return "stripe/checkout";
         Property prop = propDao.findById(id);
         model.addAttribute("prop", prop);
         model.addAttribute("notes", noteDao.findNotesByProperty(prop));
@@ -51,20 +52,26 @@ public class PropertyController {
         return "props/show";
     }
 
-    @GetMapping("props/create")
-    public String createPropForm(Model model){
+    public boolean checkSub(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = userDao.findUserById(user.getId());
         if(user.getSubscription() == 0){
+            System.out.println("user.getSubscription() = " + user.getSubscription());
             model.addAttribute("amount", 50 * 100); // in cents
             model.addAttribute("stripePublicKey", stripePublicKey);
             model.addAttribute("currency", ChargeRequest.Currency.USD);
-            System.out.println("ChargeRequest.Currency.USD = " + ChargeRequest.Currency.USD);
-            return "stripe/checkout";
+            return true;
         }
-//        System.out.println("user.getSubscription() = " + user.getSubscription());
+        return false;
+    }
+
+    @GetMapping("props/create")
+    public String createPropForm(Model model){
+        if (checkSub(model)) return "stripe/checkout";
         model.addAttribute("prop", new Property());
         return "props/create";
     }
+
 
     @PostMapping("/props/create")
     public String saveProp(@ModelAttribute Property prop){
