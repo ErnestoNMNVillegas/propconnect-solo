@@ -28,7 +28,7 @@ public class ChargeController {
     @PostMapping("/charge")
     public String charge(ChargeRequest chargeRequest, Model model)
             throws StripeException {
-        chargeRequest.setDescription("Example charge");
+        chargeRequest.setDescription("PropConnect charge");
         chargeRequest.setCurrency(ChargeRequest.Currency.USD);
         Charge charge = paymentsService.charge(chargeRequest);
         model.addAttribute("id", charge.getId());
@@ -36,7 +36,7 @@ public class ChargeController {
         model.addAttribute("chargeId", charge.getId());
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
         model.addAttribute("created", charge.getCreated());
-        System.out.println("charge.getCreated() = " + charge.getCreated());
+
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userDetails =  userDao.findUserById(userDetails.getId());
         userDetails.setSubscription(charge.getCreated());
