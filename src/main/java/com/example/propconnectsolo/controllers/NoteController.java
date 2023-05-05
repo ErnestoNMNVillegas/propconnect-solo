@@ -40,7 +40,8 @@ public class NoteController {
         Property property = propDao.findById(id);
         note.setProperty(property);
         noteDao.save(note);
-        return "redirect:/notes";
+        return "redirect:/profile";
+//        return "redirect:/notes";
     }
 
     @GetMapping("/notes")
@@ -76,7 +77,8 @@ public class NoteController {
             Note note = noteDao.findById(id);
             noteDao.delete(note);
         }
-        return "redirect:/notes";
+        return "redirect:/profile";
+//        return "redirect:/notes";
     }
 
     @GetMapping("/notes/{id}/edit")
@@ -89,7 +91,8 @@ public class NoteController {
     @PostMapping("/notes/edit")
     public String editNote(@ModelAttribute Note note){
         noteDao.save(note);
-        return "redirect:/notes";
+        return "redirect:/profile";
+//        return "redirect:/notes";
     }
 
 }

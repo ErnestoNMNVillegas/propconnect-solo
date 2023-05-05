@@ -22,25 +22,30 @@ public class Note {
     @Column
     private String image_url;
 
+    @Column
+    private String date;
+
     @ManyToOne
     @JoinColumn(name = "property_id")
     private Property property;
 
 
-    public Note(long id, String title, String body, String category, String image_url, Property property) {
+    public Note(long id, String title, String body, String category, String image_url, String date, Property property) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.category = category;
         this.image_url = image_url;
+        this.date = date;
         this.property = property;
     }
 
-    public Note(String title, String body, String category, String image_url, Property property) {
+    public Note(String title, String body, String category, String image_url, String date, Property property) {
         this.title = title;
         this.body = body;
         this.category = category;
         this.image_url = image_url;
+        this.date = date;
         this.property = property;
     }
 
@@ -94,5 +99,13 @@ public class Note {
 
     public void setProperty(Property property) {
         this.property = property;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

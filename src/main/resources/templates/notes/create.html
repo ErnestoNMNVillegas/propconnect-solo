@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Create Notes')"></head>
+<head th:replace="partials :: head('Create Notes')">
+
+
+  <!-- Tempus Dominus Styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.7/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
+</head>
 <body class="main-bg main-container">
 <nav th:replace="partials :: navbar"></nav>
 <main class="container d-flex flex-column">
+  <!-- Popperjs -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha256-BRqBN7dYgABqtY9Hd4ynE+1slnEw+roEPFzQ7TRRfcg=" crossorigin="anonymous"></script>
+  <!-- Tempus Dominus JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.7.7/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>
 
   <h1>Create a Note for this Property</h1>
   <form th:action="@{/notes/create}" th:method="post" th:object="${note}">
@@ -12,11 +21,11 @@
 
       <label for="category">Category</label>
       <select class="form-select propCatSelect"  th:field="*{category}" id="category" name="category" required>
-        <option value="Safety">General</option>
-        <option value="Free">Maintenance Contact</option>
-        <option value="Services">Maintenance Completed</option>
-        <option value="Lost-Pet">Safety</option>
-        <option value="For-Sale">Utility Contact</option>
+        <option value="General">General</option>
+        <option value="Maintenance Contact">Maintenance Contact</option>
+        <option value="Maintenance Completed">Maintenance Completed</option>
+        <option value="Safety">Safety</option>
+        <option value="Utility Contact">Utility Contact</option>
       </select>
 
       <label for="title">Title</label>
@@ -24,6 +33,9 @@
 
       <label for="body">Body</label>
       <textarea id="body" name="body" class="form-control" type="text" th:field="*{body}"></textarea>
+
+      <input type="datetime-local" class="form-control" th:field="*{date}">
+
 
       <input type="hidden" name="propId" th:value="${propId}">
       <!--            <input type="submit" class="btn btn-block btn-primary">-->

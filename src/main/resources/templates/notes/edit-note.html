@@ -12,11 +12,11 @@
 
             <label for="category">Category</label>
             <select class="form-select propCatSelect" th:field="*{category}" id="category" name="category" required>
-                <option value="Safety">General</option>
-                <option value="Free">Maintenance Contact</option>
-                <option value="Services">Maintenance Completed</option>
-                <option value="Lost-Pet">Safety</option>
-                <option value="For-Sale">Utility Contact</option>
+                <option value="General">General</option>
+                <option value="Maintenance Contact">Maintenance Contact</option>
+                <option value="Maintenance Completed">Maintenance Completed</option>
+                <option value="Safety">Safety</option>
+                <option value="Utility Contact">Utility Contact</option>
             </select>
 
             <label for="title">Title</label>
@@ -25,8 +25,10 @@
             <label for="body">Body</label>
             <textarea id="body" name="body" class="form-control" type="text" th:field="*{body}"></textarea>
 
-            <input name="prop-id" th:field="*{property}">
-            <input name="note-id" th:field="*{id}">
+            <input type="datetime-local" class="form-control" th:field="*{date}">
+
+            <input type="hidden" name="prop-id" th:field="*{property}">
+            <input type="hidden" name="note-id" th:field="*{id}">
             <input type="submit" class="btn btn-create-profile">
 
         </div>
