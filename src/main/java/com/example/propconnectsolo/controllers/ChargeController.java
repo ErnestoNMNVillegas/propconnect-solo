@@ -44,9 +44,6 @@ public class ChargeController {
         return "stripe/result";
     }
 
-
-    //Note user then set subscription
-
     @ExceptionHandler(StripeException.class)
     public String handleError(Model model, StripeException ex) {
         model.addAttribute("error", ex.getMessage());

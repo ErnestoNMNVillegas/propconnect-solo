@@ -10,11 +10,19 @@
         <div class="card profile-card w-100">
             <h2 class="card-header greeting" th:text="|Hello, ${#authentication.principal.username}!|"></h2>
             <p class="profile-email" th:text="|Email: ${#authentication.principal.email}|"></p>
-            <a class="btn btn-primary btn-edit-profile" th:href="@{/profile/{id}/edit (id = ${#authentication.principal.id})}">Edit Profile</a>
+            <a class="btn btn-primary btn-edit-profile"
+               th:href="@{/profile/{id}/edit (id = ${#authentication.principal.id})}">Edit Profile</a>
             <a th:href="@{/props/create}" class="btn btn-primary btn-create-profile w-100">Create Property</a>
         </div>
     </div>
     <br>
+    <div class="row">
+        <form class="form-inline" th:action="@{/notes/search}" method="GET">
+            <label for="q"></label>
+            <input type="text" name="q" id="q" placeholder="Search Notes">
+            <button class="btn btn-info my-2 my-sm-0" type="submit">Find</button>
+        </form>
+    </div>
     <br>
     <div class="row">
         <div class="col-4" th:each="prop : ${props}">
