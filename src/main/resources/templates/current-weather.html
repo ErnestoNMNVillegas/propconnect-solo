@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head('Weather')">
-  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-  <script type="text/javascript">
-    function initialize() {
-      const bryantPark = new google.maps.LatLng(37.869260, -122.254811);
-      const panoramaOptions = {
-        position: bryantPark,
-        pov: {
-          heading: 165,
-          pitch: 0,
-          zoom: 1
-        }
-      };
-      const myPano = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
-      myPano.setVisible(true);
+<!--  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>-->
+<!--  <script type="text/javascript">-->
+<!--    function initialize() {-->
+<!--      const bryantPark = new google.maps.LatLng(37.869260, -122.254811);-->
+<!--      const panoramaOptions = {-->
+<!--        position: bryantPark,-->
+<!--        pov: {-->
+<!--          heading: 165,-->
+<!--          pitch: 0,-->
+<!--          zoom: 1-->
+<!--        }-->
+<!--      };-->
+<!--      const myPano = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);-->
+<!--      myPano.setVisible(true);-->
 
-      initialize();
-    }
-  </script>
+<!--      initialize();-->
+<!--    }-->
+<!--  </script>-->
 </head>
 <body class="main-bg main-container">
 <nav th:replace="partials :: navbar"></nav>
+<script src="/js/keys.js"></script>
 
 <h1>SATX Weather</h1>
 
@@ -38,7 +39,12 @@
   <p th:text="${currentWeather.windSpeed} + ' mph'"></p>
 </div>
 
-<div id="pano" style="width: 425px; height: 240px"></div>
+<!--<div id="pano" style="width: 425px; height: 240px"></div>-->
+
+
+<!--<img width="600" src="https://maps.googleapis.com/maps/api/streetview?location=41.403609,2.174448&size=456x456&key={googAPIKey}" alt="test" />-->
+
+
 
 
 <footer th:replace="partials :: footer"></footer>
