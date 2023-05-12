@@ -109,7 +109,7 @@ public class PropertyController {
             Property prop = propDao.findById(id);
             propDao.delete(prop);
         }
-        return "redirect:/props";
+        return "redirect:/profile";
     }
 
 

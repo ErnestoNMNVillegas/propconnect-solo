@@ -2,10 +2,17 @@
 
 $(function () {
 
+    function getImage() {
+        const icon = $("#icon").val();
+        const weatherIcon = '<span><img src="http://openweathermap.org/img/wn/' + icon + '@4x.png"' + ' alt="img"' + ' alt="control" ></span>'
+        $("#wxIcon").html(weatherIcon);
+    }
+    getImage();
+
     function getCoord() {
-        var streetAdd = $("#streetAdd").text();
-        var zip = $("#zip").text();
-        var address = streetAdd + ', ' + zip;
+        const streetAdd = $("#streetAdd").text();
+        const zip = $("#zip").text();
+        const address = streetAdd + ', ' + zip;
 
         console.log(streetAdd);
         console.log(zip);
@@ -13,39 +20,17 @@ $(function () {
 
         geocode(address, mapBoxKey).then(function (results) {
             console.log(results);
-            let convertedResult = results.toString();
+            const convertedResult = results.reverse().toString();
             console.log(convertedResult);
             let imageRequest = ''
-            imageRequest = '<span><img src="https://maps.googleapis.com/maps/api/streetview?location=' + convertedResult + '&size=456x456&key=' + googAPIKey + '" alt="test" ></span>';
+            imageRequest = '<img src="https://maps.googleapis.com/maps/api/streetview?location=' + convertedResult + '&size=332x200&key=' + googAPIKey + '" alt="test" >';
             $('#streetView').html(imageRequest);
         });
-
-        // '<span><img src="https://maps.googleapis.com/maps/api/streetview?location=41.403609,2.174448&size=456x456&key=' + googAPIKey + '" alt="test" ></span>'
-
-        // '<span><img src="http://openweathermap.org/img/wn/' + icon + '@4x.png"' + ' alt="img"' + ' alt="control" ></span>'
     }
     getCoord();
 
+    // imageRequest = '<img src="https://maps.googleapis.com/maps/api/streetview?location=' + convertedResult + '&size=256x256&key=' + googAPIKey + '" alt="test" >';
 
-    // geocode("San Antonio, Texas", mapBoxKey).then(function (results) {
-    //     console.log(results);
-    // });
-
-    //Change reverse to string
-
-    // '<span><img src="https://maps.googleapis.com/maps/api/streetview?location=29.537585,-98.363057&size=APIKey" alt="test" ></span>'
-
-
-
-
-
-    // function getImage() {
-    //     const icon = $("#icon").val();
-    //     // console.log(icon);
-    //     var weatherIcon = '<span><img src="http://openweathermap.org/img/wn/' + icon + '@4x.png"' + ' alt="img"' + ' alt="control" ></span>'
-    //     $("#wxIcon").html(weatherIcon);
-    // }
-    // getImage();
 
     // width="100" height="100"
     // "http://openweathermap.org/img/w/'
@@ -81,12 +66,5 @@ $(function () {
     //     }
     // }
     // tempWarning();
-
-
-
-
-
-
-
 
 });

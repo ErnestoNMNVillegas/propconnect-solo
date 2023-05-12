@@ -6,7 +6,6 @@
 <script src="/js/keys.js"></script>
 <main class="container">
     <h1>My Profile</h1><br>
-
     <div class="card-container">
         <div class="card profile-card w-100">
             <h2 class="card-header greeting" th:text="|Hello, ${#authentication.principal.username}!|"></h2>
@@ -26,22 +25,20 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-4" th:each="prop : ${props}">
+        <div id="loop" class="col-4" th:each="prop : ${props}">
             <div th:if="${#authentication.principal.id == prop.user.id}">
                 <div class="card profile-prop-card">
                     <h4 class="card-header prop-header" th:text="|Property Category: ${prop.category}|"></h4>
                     <a th:href="@{/props/{id} (id = ${prop.id})}">
-                        <span id="streetView" class="d-flex"></span>
-                        <span id="streetAdd" th:text="${prop.street_add}"></span><br>
+<!--                        <span id="streetView" class="d-flex"></span>-->
+                        <span th:text="${prop.street_add}"></span><br>
                         <span th:text="${prop.city}"></span>
                         <span th:text="|${prop.state}, |"></span>
-                        <span id="zip" th:text="${prop.zip}"></span></a>
+                        <span th:text="${prop.zip}"></span></a>
                 </div>
             </div>
         </div>
     </div>
-
-
 </main>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: boot-scripts"></div>

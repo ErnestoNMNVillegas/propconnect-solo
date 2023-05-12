@@ -20,6 +20,12 @@ footer {
     align-items: center;
 }
 
+#streetView {
+    /*display: flex!important;*/
+    /*justify-content: center;*/
+    flex-direction: column;
+}
+
 
 
 

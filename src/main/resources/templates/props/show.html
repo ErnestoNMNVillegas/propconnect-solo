@@ -5,16 +5,17 @@
 </head>
 <body class="main-bg main-container">
 <nav th:replace="partials :: navbar"></nav>
+<script src="/js/keys.js"></script>
 <main class="container">
-
-
     <div id="prop-show" class="row">
         <div class="col-6">
             <div class="card h-100">
                 <h5 class="card-header" th:text="|Category: ${prop.category}|"></h5>
                 <div class="card d-flex justify-content-center">
+                    <p id="streetView" class="d-flex"></p>
                     <p class="address-header">Address:</p>
-                    <p th:text="${prop.street_add}"></p>
+                    <p id="streetAdd" th:text="${prop.street_add}"></p>
+                    <p type="hidden" id="zip" th:text="${prop.zip}"></p>
                     <p th:text="${prop.city + ', ' + prop.state + ' ' + prop.zip}"></p>
                     <a th:href="@{/props/{id}/edit(id=${prop.id})}" class="btn">Edit Property</a>
                     <a th:href="@{/props/{id}/delete(id=${prop.id})}" class="btn">Delete Property</a>
@@ -51,15 +52,15 @@
     <div class="com-btn d-flex">
         <a th:href="@{/notes/create/{id}(id=${prop.id})}" class="btn btn-primary mx-auto">Add Note to Property</a>
     </div>
-
 </main>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: boot-scripts"></div>
+<script src="/js/mapbox-geocoder-utils.js"></script>
 <!-- Jquery JS -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <!-- Custom JS -->
-<script src="/js/main.js" type="application/javascript"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
