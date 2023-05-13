@@ -9,7 +9,7 @@ $(function () {
     }
     getImage();
 
-    function getCoord() {
+    function getStreetView() {
         const streetAdd = $("#streetAdd").text();
         const zip = $("#zip").text();
         const address = streetAdd + ', ' + zip;
@@ -27,7 +27,7 @@ $(function () {
             $('#streetView').html(imageRequest);
         });
     }
-    getCoord();
+    getStreetView();
 
     // imageRequest = '<img src="https://maps.googleapis.com/maps/api/streetview?location=' + convertedResult + '&size=256x256&key=' + googAPIKey + '" alt="test" >';
 

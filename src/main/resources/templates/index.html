@@ -8,10 +8,33 @@
 <nav th:replace="partials :: navbar"></nav>
 
 <main class="container-home">
-        <h1>Welcome</h1>
-        <h3>
-            Prop Connect - Solo
-        </h3>
+    <h1>Welcome</h1>
+    <h3>
+        Prop Connect - Solo
+    </h3>
+    <br>
+    <br>
+    <br>
+    <h4>Contact Us</h4>
+    <div class="d-flex mb-3">
+        <br>
+        <form
+                action="https://formspree.io/f/xoqznyky"
+                method="POST"
+        >
+            <p><label class="form-label">
+                Your email:
+                <input type="email" name="email" class="form-control">
+            </label></p>
+
+            <P><label class="form-label">
+                Your message:
+                <textarea name="message" class="form-control"></textarea>
+            </label></P>
+
+            <!-- your other form fields go here -->
+            <button type="submit" class="btn footer-bg">Send</button>
+        </form>
     </div>
 </main>
 <footer th:replace="partials :: footer"></footer>
