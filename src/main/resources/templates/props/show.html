@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head ('View a Property')">
     <title>Property</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script type="module" src="/js/index.js"></script>
 </head>
 <body class="main-bg main-container">
 <nav th:replace="partials :: navbar"></nav>
@@ -52,6 +54,11 @@
     <div class="com-btn d-flex">
         <a th:href="@{/notes/create/{id}(id=${prop.id})}" class="btn btn-primary mx-auto">Add Note to Property</a>
     </div>
+    <div id="map"></div>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initPano&v=weekly"
+            defer
+    ></script>
 </main>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: boot-scripts"></div>

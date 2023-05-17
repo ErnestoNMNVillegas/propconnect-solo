@@ -26,6 +26,9 @@ footer {
     flex-direction: column;
 }
 
+#map {
+    height: 100%;
+}
 
 
 
