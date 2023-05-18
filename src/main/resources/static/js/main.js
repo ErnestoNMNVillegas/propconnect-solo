@@ -30,6 +30,7 @@ $(function () {
     getStreetView();
 
 
+
     // imageRequest = '<img src="https://maps.googleapis.com/maps/api/streetview?location=' + convertedResult + '&size=256x256&key=' + googAPIKey + '" alt="test" >';
 
 

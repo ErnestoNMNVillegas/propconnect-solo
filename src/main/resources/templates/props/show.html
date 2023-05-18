@@ -54,11 +54,15 @@
     <div class="com-btn d-flex">
         <a th:href="@{/notes/create/{id}(id=${prop.id})}" class="btn btn-primary mx-auto">Add Note to Property</a>
     </div>
-    <div id="map"></div>
+    <div id="street-view"></div>
     <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initPano&v=weekly"
+            src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initPano&v=weekly"
             defer
     ></script>
+<!--    <script-->
+<!--            src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initialize"-->
+<!--            defer-->
+<!--    ></script>-->
 </main>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: boot-scripts"></div>
