@@ -17,4 +17,5 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     List<Note> searchByTitleLike(@Param("term") String term);
 
 
+
 }
