@@ -5,6 +5,7 @@ import com.example.propconnectsolo.models.Property;
 import com.example.propconnectsolo.repositories.NoteRepository;
 import com.example.propconnectsolo.repositories.PropertyRepository;
 import com.example.propconnectsolo.repositories.UserRepository;
+import com.example.propconnectsolo.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,14 @@ public class NoteController {
 
     private final NoteRepository noteDao;
 
+    private final EmailService emailService;
 
-    public NoteController(UserRepository userDao, PropertyRepository propDao, NoteRepository noteDao) {
+
+    public NoteController(UserRepository userDao, PropertyRepository propDao, NoteRepository noteDao, EmailService emailService) {
         this.userDao = userDao;
         this.propDao = propDao;
         this.noteDao = noteDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("notes/create/{id}")
@@ -40,6 +44,7 @@ public class NoteController {
         Property property = propDao.findById(id);
         note.setProperty(property);
         noteDao.save(note);
+        emailService.prepareAndSend(note);
         return "redirect:/profile";
 //        return "redirect:/notes";
     }

@@ -30,7 +30,7 @@ public class EmailService {
 //        msg.setTo(note.getUser().getEmail());
         msg.setTo(note.getProperty().getUser().getEmail());
         msg.setSubject("Post Created/Edited");
-        msg.setText(String.format("Post title: '%s'%n Post description: '%s'", note.getTitle(), note.getBody()));
+        msg.setText(String.format("Post category: '%s'%n Post title: '%s'%n Post description: '%s'%n Post date: '%s'", note.getCategory(),note.getTitle(), note.getBody(), note.getDate()));
 
         try{
             this.emailSender.send(msg);
