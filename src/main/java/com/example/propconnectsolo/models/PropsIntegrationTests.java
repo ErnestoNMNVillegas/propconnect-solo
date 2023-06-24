@@ -49,4 +49,17 @@ public class PropsIntegrationTests {
 //                .getRequest()
 //                .getSession();
 //    }
+
+//    @Test
+//    public void contextLoads() {
+//        // Sanity Test, just to make sure the MVC bean is working
+//        assertNotNull(mvc);
+//    }
+//
+//    @Test
+//    public void testIfUserSessionIsActive() throws Exception {
+//        // It makes sure the returned session is not null
+//        assertNotNull(httpSession);
+//    }
+
 }
