@@ -37,6 +37,7 @@ public class ChargeController {
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
         model.addAttribute("created", charge.getCreated());
 
+        //Saves the Created date to the subscription field of user object
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userDetails =  userDao.findUserById(userDetails.getId());
         userDetails.setSubscription(charge.getCreated());
